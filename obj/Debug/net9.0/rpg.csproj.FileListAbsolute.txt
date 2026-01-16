@@ -1,0 +1,14 @@
+/home/server-code/c#/rpg/bin/Debug/net9.0/rpg
+/home/server-code/c#/rpg/bin/Debug/net9.0/rpg.deps.json
+/home/server-code/c#/rpg/bin/Debug/net9.0/rpg.runtimeconfig.json
+/home/server-code/c#/rpg/bin/Debug/net9.0/rpg.dll
+/home/server-code/c#/rpg/bin/Debug/net9.0/rpg.pdb
+/home/server-code/c#/rpg/obj/Debug/net9.0/rpg.GeneratedMSBuildEditorConfig.editorconfig
+/home/server-code/c#/rpg/obj/Debug/net9.0/rpg.AssemblyInfoInputs.cache
+/home/server-code/c#/rpg/obj/Debug/net9.0/rpg.AssemblyInfo.cs
+/home/server-code/c#/rpg/obj/Debug/net9.0/rpg.csproj.CoreCompileInputs.cache
+/home/server-code/c#/rpg/obj/Debug/net9.0/rpg.dll
+/home/server-code/c#/rpg/obj/Debug/net9.0/refint/rpg.dll
+/home/server-code/c#/rpg/obj/Debug/net9.0/rpg.pdb
+/home/server-code/c#/rpg/obj/Debug/net9.0/rpg.genruntimeconfig.cache
+/home/server-code/c#/rpg/obj/Debug/net9.0/ref/rpg.dll

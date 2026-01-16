@@ -1,0 +1,442 @@
+﻿int lvl = 1;
+int exp = 0;
+int lvl_up_exp = 50;
+int pv_user = 20;
+int save_pv_user = pv_user;
+int force_user = 5;
+string monstre = "0";
+int pv_monstre = 1;
+int force_monstre = 1;
+Random rnd = new Random();
+int chance_spawn_ennemi = rnd.Next(1, 101);
+void Check_exp()
+{
+    if (monstre == "goblin")
+    {
+        exp = exp + 10;
+    }
+    else if (monstre == "squelette")
+    {
+        exp = exp + 20;
+    }
+    else if (monstre == "zombie")
+    {
+        exp = exp + 40;
+    }
+    if (exp >= lvl_up_exp)
+    {
+        exp = 0;
+        lvl = lvl + 1;
+        pv_user = pv_user + 5;
+        force_user = force_user + 3;
+        lvl_up_exp = lvl_up_exp + 10;
+        save_pv_user = pv_user;
+    }
+}
+void Combats()
+{
+    bool fin_combats = false;
+    Console.WriteLine($"tu as {exp}exp / {lvl_up_exp}exp pour monter de level");
+    Console.WriteLine($"tu est lvl {lvl}");
+    Console.WriteLine($"un {monstre} est apparu il faut le combatre!!!");
+    Console.WriteLine($"il a {pv_monstre}pv et fait {force_monstre} degats");
+    void Check_mort()
+    {
+        if (pv_user <= 0)
+        {
+            Console.WriteLine("tu es mort tu as perdu");
+            string restart_confirmation = "";
+            while (restart_confirmation != "ok")
+            {
+                Console.WriteLine("voulez-vous recommencer?");
+                string choix_restart = Console.ReadLine();
+                if (choix_restart == "oui")
+                {
+                    restart_confirmation = "ok";
+                    Spawn_ennemis();
+                }
+                else if (choix_restart == "non")
+                {
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Console.WriteLine("veillez choisir une bonne action");
+                }
+            }
+        }
+    }
+    if (lvl <= 5)
+    {
+        while (!fin_combats)
+        {
+            Console.WriteLine($"C'est a ton tour! tu as {pv_user}pv. Le monstre a {pv_monstre}pv. Quelle action veut tu faire?");
+            Console.WriteLine("1 = attaques; 2 = actions; 3 = fuir");
+            string choix_action = Console.ReadLine();
+            string choix_attaque_user;
+            if (choix_action == "1")
+            {
+                Console.WriteLine("tu as 1 attaque disponible:");
+                Console.WriteLine($"1 = attaque de base fait {force_user} degats");
+                Console.WriteLine("tu n'as pas d'autre attaque disponible pour le moment");
+                choix_attaque_user = Console.ReadLine();
+                if (choix_attaque_user == "1")
+                {
+                    pv_monstre = pv_monstre - force_user;
+                    Console.WriteLine($"le monstre a {pv_monstre}pv");
+                    pv_user = pv_user - force_monstre;
+                    Console.WriteLine($"tu as {pv_user}pv");
+                    Check_mort();
+                    if (pv_monstre <= 0)
+                    {
+                        Console.WriteLine("tu as gagne");
+                        fin_combats = true;
+                        pv_user = save_pv_user;
+                        Check_exp();
+                        string restart_confirmation = "";
+                        while (restart_confirmation != "ok")
+                        {
+                            Console.WriteLine("voulez-vous recommencer?");
+                            string choix_restart = Console.ReadLine();
+                            if (choix_restart == "oui")
+                            {
+                                restart_confirmation = "ok";
+                                Spawn_ennemis();
+                            }
+                            else if (choix_restart == "non")
+                            {
+                                Environment.Exit(0);
+                            }
+                            else
+                            {
+                                Console.WriteLine("veillez choisir une bonne action");
+                            }
+                        }
+                    }
+                }
+            }
+            else if (choix_action == "2")
+            {
+                Console.WriteLine("tu n'as pas d'object pour l'instant");
+            }
+            else if (choix_action == "3")
+            {
+                int chance_fuite = rnd.Next(1,5);
+                if (chance_fuite == 1)
+                {
+                    Console.WriteLine("tu prends la fuite");
+                    fin_combats = true;
+                }
+                else if (chance_fuite >= 1)
+                {
+                    Console.WriteLine("tu n'as pas reussi a prendre la suite");
+                    pv_user = pv_user - force_monstre;
+                    Console.WriteLine($"tu as {pv_user}pv");        
+                }
+            }
+        }       
+    }
+    else if (lvl <= 10)
+    {
+        while (!fin_combats)
+        {
+            int force_user_attaque2 = force_user + 5;
+            Console.WriteLine($"C'est a ton tour! tu as {pv_user}pv. Le monstre a {pv_monstre}pv. Quelle action veut tu faire?");
+            Console.WriteLine("1 = attaques; 2 = actions; 3 = fuir");
+            string choix_action = Console.ReadLine();
+            string choix_attaque_user;
+            if (choix_action == "1")
+            {
+                Console.WriteLine("tu as 1 attaque disponible:");
+                Console.WriteLine($"1 = attaque de base fait {force_user} degats");
+                Console.WriteLine($"2 =  fait {force_user_attaque2} degats mais te retire 2pv");
+                Console.WriteLine("tu n'as pas d'autre attaque disponible pour le moment");
+                choix_attaque_user = Console.ReadLine();
+                if (choix_attaque_user == "1")
+                {
+                    pv_monstre = pv_monstre - force_user_attaque2;
+                    Console.WriteLine($"le monstre a {pv_monstre}pv");
+                    pv_user = pv_user - force_monstre;
+                    Console.WriteLine($"tu as {pv_user}pv");
+                    Check_mort();
+                    if (pv_monstre <= 0)
+                    {
+                        Console.WriteLine("tu as gagne");
+                        fin_combats = true;
+                        pv_user = save_pv_user;
+                        Check_exp();
+                        string restart_confirmation = "";
+                        while (restart_confirmation != "ok")
+                        {
+                            Console.WriteLine("voulez-vous recommencer?");
+                            string choix_restart = Console.ReadLine();
+                            if (choix_restart == "oui")
+                            {
+                                restart_confirmation = "ok";
+                                pv_user = save_pv_user;
+                                Spawn_ennemis();
+                            }
+                            else if (choix_restart == "non")
+                            {
+                                Environment.Exit(0);
+                            }
+                            else
+                            {
+                                Console.WriteLine("veillez choisir une bonne action");
+                            }
+                        }
+                    }
+                }
+                else if (choix_attaque_user == "2")
+                {
+                    pv_monstre = pv_monstre - force_user_attaque2;
+                    Console.WriteLine($"le monstre a {pv_monstre}pv");
+                    pv_user = pv_user - force_monstre;
+                    pv_user = pv_user - 2;
+                    Console.WriteLine($"tu as {pv_user}pv");
+                    Check_mort();
+                    if (pv_monstre <= 0)
+                    {
+                        Console.WriteLine("tu as gagne");
+                        fin_combats = true;
+                        pv_user = save_pv_user;
+                        Check_exp();
+                        string restart_confirmation = "";
+                        while (restart_confirmation != "ok")
+                        {
+                            Console.WriteLine("voulez-vous recommencer?");
+                            string choix_restart = Console.ReadLine();
+                            if (choix_restart == "oui")
+                            {
+                                restart_confirmation = "ok";
+                                Spawn_ennemis();
+                            }
+                            else if (choix_restart == "non")
+                            {
+                                Environment.Exit(0);
+                            }
+                            else
+                            {
+                                Console.WriteLine("veillez choisir une bonne action");
+                            }
+                        }
+                    }
+                }
+            }
+            else if (choix_action == "2")
+            {
+                Console.WriteLine("tu n'as pas d'object pour l'instant");
+            }
+            else if (choix_action == "3")
+            {
+                int chance_fuite = rnd.Next(1,5);
+                if (chance_fuite == 1)
+                {
+                    Console.WriteLine("tu prends la fuite");
+                    fin_combats = true;
+                }
+                else if (chance_fuite >= 1)
+                {
+                    Console.WriteLine("tu n'as pas reussi a prendre la suite");
+                    pv_user = pv_user - force_monstre;
+                    Console.WriteLine($"tu as {pv_user}pv");        
+                }
+            }
+        }       
+    }
+    else if (lvl >= 10)
+    {
+        while (!fin_combats)
+        {
+            int force_user_attaque2 = force_user + 5;
+            int force_user_attaque3 = force_user + 10;
+            Console.WriteLine($"C'est a ton tour! tu as {pv_user}pv. Le monstre a {pv_monstre}pv. Quelle action veut tu faire?");
+            Console.WriteLine("1 = attaques; 2 = actions; 3 = fuir");
+            string choix_action = Console.ReadLine();
+            string choix_attaque_user;
+            if (choix_action == "1")
+            {
+                Console.WriteLine("tu as 1 attaque disponible:");
+                Console.WriteLine($"1 = attaque de base fait {force_user} degats");
+                Console.WriteLine($"2 =  fait {force_user_attaque2} degats mais te retire 1pv");
+                Console.WriteLine($"3 = fait {force_user_attaque3} degats mais te retire 2pv");
+                Console.WriteLine("tu n'as pas d'autre attaque disponible pour le moment");
+                choix_attaque_user = Console.ReadLine();
+                if (choix_attaque_user == "1")
+                {
+                    pv_monstre = pv_monstre - force_user;
+                    Console.WriteLine($"le monstre a {pv_monstre}pv");
+                    pv_user = pv_user - force_monstre;
+                    Console.WriteLine($"tu as {pv_user}pv");
+                    Check_mort();
+                    if (pv_monstre <= 0)
+                    {
+                        Console.WriteLine("tu as gagne");
+                        fin_combats = true;
+                        Check_exp();
+                        string restart_confirmation = "";
+                        while (restart_confirmation != "ok")
+                        {
+                            Console.WriteLine("voulez-vous recommencer?");
+                            string choix_restart = Console.ReadLine();
+                            if (choix_restart == "oui")
+                            {
+                                restart_confirmation = "ok";
+                                pv_user = save_pv_user;
+                                Spawn_ennemis();
+                            }
+                            else if (choix_restart == "non")
+                            {
+                                Environment.Exit(0);
+                            }
+                            else
+                            {
+                                Console.WriteLine("veillez choisir une bonne action");
+                            }
+                        }
+                    }
+                }
+                else if (choix_attaque_user == "2")
+                {
+                    pv_monstre = pv_monstre - force_user_attaque2;
+                    Console.WriteLine($"le monstre a {pv_monstre}pv");
+                    pv_user = pv_user - force_monstre;
+                    pv_user = pv_user - 1;
+                    Console.WriteLine($"tu as {pv_user}pv");
+                    Check_mort();
+                    if (pv_monstre <= 0)
+                    {
+                        Console.WriteLine("tu as gagne");
+                        fin_combats = true;
+                        Check_exp();
+                        string restart_confirmation = "";
+                        while (restart_confirmation != "ok")
+                        {
+                            Console.WriteLine("voulez-vous recommencer?");
+                            string choix_restart = Console.ReadLine();
+                            if (choix_restart == "oui")
+                            {
+                                restart_confirmation = "ok";
+                                Spawn_ennemis();
+                            }
+                            else if (choix_restart == "non")
+                            {
+                                Environment.Exit(0);
+                            }
+                            else
+                            {
+                                Console.WriteLine("veillez choisir une bonne action");
+                            }
+                        }
+                    }
+                }
+                else if (choix_attaque_user == "3")
+                {
+                    pv_monstre = pv_monstre - force_user_attaque3;
+                    Console.WriteLine($"le monstre a {pv_monstre}pv");
+                    pv_user = pv_user - force_monstre;
+                    pv_user = pv_user - 2;
+                    Console.WriteLine($"tu as {pv_user}pv");
+                    Check_mort();
+                    if (pv_monstre <= 0)
+                    {
+                        Console.WriteLine("tu as gagne");
+                        fin_combats = true;
+                        Check_exp();
+                        string restart_confirmation = "";
+                        while (restart_confirmation != "ok")
+                        {
+                            Console.WriteLine("voulez-vous recommencer?");
+                            string choix_restart = Console.ReadLine();
+                            if (choix_restart == "oui")
+                            {
+                                restart_confirmation = "ok";
+                                Spawn_ennemis();
+                            }
+                            else if (choix_restart == "non")
+                            {
+                                Environment.Exit(0);
+                            }
+                            else
+                            {
+                                Console.WriteLine("veillez choisir une bonne action");
+                            }
+                        }
+                    }
+                }
+            }
+            else if (choix_action == "2")
+            {
+                Console.WriteLine("tu n'as pas d'object pour l'instant");
+            }
+            else if (choix_action == "3")
+            {
+                int chance_fuite = rnd.Next(1,5);
+                if (chance_fuite == 1)
+                {
+                    Console.WriteLine("tu prends la fuite");
+                    fin_combats = true;
+                }
+                else if (chance_fuite >= 1)
+                {
+                    Console.WriteLine("tu n'as pas reussi a prendre la suite");
+                    pv_user = pv_user - force_monstre;
+                    Console.WriteLine($"tu as {pv_user}pv");        
+                }
+            }
+        }       
+    }
+}
+
+void Spawn_ennemis()
+{
+    if (lvl <= 5)
+    {
+        monstre = "goblin";
+        pv_monstre = 15;
+        force_monstre = 5;
+        Combats();
+    }
+    else if (lvl <= 10)
+    {
+        if (chance_spawn_ennemi <= 50)
+        {
+            monstre = "goblin";
+            pv_monstre = 20;
+            force_monstre = 5;
+            Combats();
+        }
+        else if (chance_spawn_ennemi >= 50)
+        {
+            monstre = "zombie";
+            pv_monstre = 40;
+            force_monstre = 10;
+            Combats();
+        }
+    }
+    else if (lvl >= 10)
+    {
+       if (chance_spawn_ennemi <= 50)
+        {
+            monstre = "goblin";
+            pv_monstre = 20;
+            force_monstre = 5;
+            Combats();
+        }
+        else if (chance_spawn_ennemi >= 85)
+        {
+            monstre = "zombie";
+            pv_monstre = 40;
+            force_monstre = 10;
+            Combats();
+        }
+        else if (chance_spawn_ennemi >= 50)
+        {
+            monstre = "squelette";
+            pv_monstre = 30;
+            force_monstre = 8;
+            Combats();
+        }
+    } 
+}
+Spawn_ennemis();
