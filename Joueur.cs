@@ -1,7 +1,6 @@
 public class Joueur
 {
-    string pseudo; // pseudo du joueur
-
+    string pseudo// pseudo du joueur
     public int vie; // vie du joueur
     public int force; // degat que fait le joueur
     public int exp;
@@ -21,7 +20,7 @@ public class Joueur
     public string Infos()
     {
         int expAvantLvlUp = lvlCapExp - exp;
-        int infoExpAvantLvlUp = lvl +1;
+        int infoExpAvantLvlUp = lvl + 1;
         return "Bienvenu " + pseudo + ". Tu as " + vie + " vie, tu as " + force + " de force. Tu as " + exp + " exp et il te faut encore " + expAvantLvlUp + " exp pour passer au niveau " + infoExpAvantLvlUp;
     }
     public bool enVie()
