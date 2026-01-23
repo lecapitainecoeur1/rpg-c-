@@ -1,6 +1,6 @@
 public class Joueur
 {
-    string pseudo// pseudo du joueur
+    string pseudo; // pseudo du joueur
     public int vie; // vie du joueur
     public int force; // degat que fait le joueur
     public int exp;
