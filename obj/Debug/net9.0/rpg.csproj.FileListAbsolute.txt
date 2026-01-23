@@ -12,3 +12,4 @@
 /home/server-code/c#/rpg/obj/Debug/net9.0/rpg.pdb
 /home/server-code/c#/rpg/obj/Debug/net9.0/rpg.genruntimeconfig.cache
 /home/server-code/c#/rpg/obj/Debug/net9.0/ref/rpg.dll
+/home/server-code/c#/rpg/obj/Debug/net9.0/rpg.sourcelink.json
