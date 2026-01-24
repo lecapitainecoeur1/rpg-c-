@@ -23,6 +23,20 @@ void Combats()
             joueur1.LvlUp();
         }
     }
+    void CheckVie()
+    {
+        if (!joueur1.enVie())
+        {
+            Console.WriteLine("Tu as perdu");
+            Restart();
+        }
+        else if (!ennemy.enVie())
+        {
+            Console.WriteLine($"Tu as gagne");
+            Exp();
+            Restart();
+        }
+    }
     void PlayerTurn()
     {
         Console.WriteLine($"C'est a ton tour. Tu as {joueur1.vie} pv");
@@ -44,12 +58,14 @@ void Combats()
         {
             Console.WriteLine($"Dommage tu vient de perdre un tour");
         }
+        CheckVie();
     }
     void EnnemyTurn()
     {
         joueur1.vie = joueur1.vie - ennemy.degats;
         Console.WriteLine($"L'ennemi t'a attaque tu as perdu des pv");
         Console.WriteLine($"Tu as {joueur1.vie} pv");
+        CheckVie();
     }
     while (joueur1.enVie() && ennemy.enVie() && !fuite)
     {
@@ -68,16 +84,5 @@ void Combats()
         {
             Environment.Exit(0);
         }
-    }
-    if (!joueur1.enVie())
-    {
-        Console.WriteLine("Tu as perdu");
-        Restart();
-    }
-    else if (!ennemy.enVie())
-    {
-        Console.WriteLine($"Tu as gagne");
-        Exp();
-        Restart();
     }
 }
