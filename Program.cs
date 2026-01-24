@@ -7,7 +7,7 @@ Joueur joueur1 = new Joueur(pseudoJoueur, 20, 4, 0, 10, 1); // pseudo; max vie; 
 Combats();
 void Combats()
 {
-    joueur1.vie = 20;
+    joueur1.vie = joueur1.maxVie;
     Ennemy ennemy = new Ennemy(joueur1, rnd); 
 
     Console.WriteLine(joueur1.Infos());

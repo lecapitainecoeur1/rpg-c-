@@ -38,6 +38,31 @@ public class Ennemy
                 expDrop = 10;
             }
         }
+        else
+        {
+            int ennemySpawn = rnd.Next(0, 3);
+            if (ennemySpawn == 0)
+            {
+                nom = "gobelin";
+                vie = 20;
+                degats = 3;
+                expDrop = 5;
+            }
+            else if (ennemySpawn == 1)
+            {
+                nom = "orc";
+                vie = 30;
+                degats = 5;
+                expDrop = 10;
+            }
+            else
+            {
+                nom = "troll";
+                vie = 40;
+                degats = 7;
+                expDrop = 20;
+            }
+        }
     }
     public string Infos()
     {
