@@ -14,7 +14,7 @@ public class Ennemy
     }
     public Ennemy(Joueur joueur, Random rnd)
     {
-        if (joueur.lvl <= 5)
+        if (joueur.lvl < 5)
         {
             nom = "gobelin";
             vie = 20;
