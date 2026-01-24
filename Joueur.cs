@@ -12,6 +12,7 @@ public class Joueur
         // actualisation des pseudo + vie + degats
         pseudo = unPseudo;
         vie = nbVie;
+        maxVie = nbVie;
         force = nbForce;
         exp = nbExp;
         lvlCapExp = nbLvlCapExp;
