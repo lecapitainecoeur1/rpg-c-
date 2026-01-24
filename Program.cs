@@ -1,7 +1,12 @@
-﻿Random rnd = new Random();
+﻿using System.Security;
+
+Random rnd = new Random();
 Console.WriteLine("Quel est ton pseudo?");
 string pseudoJoueur = Console.ReadLine();
-
+if (pseudoJoueur == "")
+{
+    pseudoJoueur = "player";
+}
 Joueur joueur1 = new Joueur(pseudoJoueur, 20, 4, 0, 10, 1); // pseudo; max vie; force; exp; lvlcapexp; lvl;
 
 Combats();
