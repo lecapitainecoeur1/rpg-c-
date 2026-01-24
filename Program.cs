@@ -1,6 +1,4 @@
-﻿using System.Security;
-
-Random rnd = new Random();
+﻿Random rnd = new Random();
 Console.WriteLine("Quel est ton pseudo?");
 string pseudoJoueur = Console.ReadLine();
 if (pseudoJoueur == "")
