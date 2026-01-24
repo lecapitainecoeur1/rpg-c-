@@ -1,3 +1,4 @@
+
 public class Ennemy
 {
     string nom;
@@ -10,6 +11,33 @@ public class Ennemy
         vie = nbVie;
         degats = nbDegats;
         expDrop = nbExpDrop;
+    }
+    public Ennemy(Joueur joueur, Random rnd)
+    {
+        if (joueur.lvl <= 5)
+        {
+            nom = "gobelin";
+            vie = 20;
+            degats = 3;
+            expDrop = 5;
+        }
+        else if (joueur.lvl <= 10)
+        {
+            if (rnd.Next(0, 2) == 0)
+            {
+                nom = "gobelin";
+                vie = 20;
+                degats = 3;
+                expDrop = 5;
+            }
+            else
+            {
+                nom = "orc";
+                vie = 30;
+                degats = 5;
+                expDrop = 10;
+            }
+        }
     }
     public string Infos()
     {

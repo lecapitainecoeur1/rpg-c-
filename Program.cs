@@ -8,7 +8,7 @@ Combats();
 void Combats()
 {
     joueur1.vie = 20;
-    Ennemy ennemy = new Ennemy("gobelin", 16, 3, 5); // nom ennemy; vieEnnemy; forceEnnemy; dropExp
+    Ennemy ennemy = new Ennemy(joueur1, rnd); 
 
     Console.WriteLine(joueur1.Infos());
     Console.WriteLine(ennemy.Infos());
