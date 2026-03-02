@@ -33,8 +33,8 @@ public class Ennemy
             else
             {
                 nom = "orc";
-                vie = 30;
-                degats = 5;
+                vie = 40;
+                degats = 6;
                 expDrop = 10;
             }
         }
@@ -51,15 +51,15 @@ public class Ennemy
             else if (ennemySpawn == 1)
             {
                 nom = "orc";
-                vie = 30;
-                degats = 5;
+                vie = 40;
+                degats = 6;
                 expDrop = 10;
             }
             else
             {
                 nom = "troll";
-                vie = 40;
-                degats = 7;
+                vie = 80;
+                degats = 12;
                 expDrop = 20;
             }
         }

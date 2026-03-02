@@ -28,3 +28,6 @@
 /workspaces/rpg-c-/obj/Debug/net9.0/rpg.pdb
 /workspaces/rpg-c-/obj/Debug/net9.0/rpg.genruntimeconfig.cache
 /workspaces/rpg-c-/obj/Debug/net9.0/ref/rpg.dll
+/workspaces/rpg-c-/bin/Debug/net9.0/Newtonsoft.Json.dll
+/workspaces/rpg-c-/obj/Debug/net9.0/rpg.csproj.AssemblyReference.cache
+/workspaces/rpg-c-/obj/Debug/net9.0/rpg.csproj.Up2Date

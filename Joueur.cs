@@ -31,8 +31,8 @@ public class Joueur
     }
     public void LvlUp()
     {
-        force = force + 2;
-        maxVie = vie + 5;
+        force = force + 1;
+        maxVie = maxVie + 2;
         lvlCapExp = lvlCapExp + 10;
     }
 }
