@@ -13,7 +13,8 @@ public class LanguageService
 
         if (!File.Exists(path))
         {
-            Console.WriteLine($"Lang file not found: {path}");
+            Console.WriteLine($"Fichier langue introuvable : {path}");
+            translations = new Dictionary<string, string>();
             return;
         }
 
@@ -21,10 +22,27 @@ public class LanguageService
         translations = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
     }
 
+    // 👉 Méthode simple
     public string Get(string key)
     {
+        if (translations == null)
+            return $"[{key}]";
+
         return translations.TryGetValue(key, out var value)
             ? value
             : $"[{key}]";
+    }
+
+    // 👉 Méthode avec variables
+    public string Get(string key, Dictionary<string, string> variables)
+    {
+        string text = Get(key);
+
+        foreach (var pair in variables)
+        {
+            text = text.Replace("{" + pair.Key + "}", pair.Value);
+        }
+
+        return text;
     }
 }

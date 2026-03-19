@@ -66,7 +66,15 @@ public class Ennemy
     }
     public string Infos()
     {
-        return "Un " + nom + " est devant toi il a " + vie + " vie et fait " + degats + " degats, si tu le tue tu recevra " + expDrop + " exp";
+        var variables = new Dictionary<string, string>
+        {
+            {"nom", nom},
+            {"vie", vie.ToString()},
+            {"degats", degats.ToString()},
+            {"expDrop", expDrop.ToString()}
+        };
+        string textInfo = lang.Get("ennemiStats", variables);
+        return 
     }
     public bool enVie()
     {

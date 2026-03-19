@@ -1,5 +1,8 @@
+
 public class Joueur
 {
+    LanguageService lang = new LanguageService();
+    Config config = Config.Load();
     string pseudo; // pseudo du joueur
     public int vie; // vie du joueur
     public int force; // degat que fait le joueur
@@ -17,13 +20,24 @@ public class Joueur
         exp = nbExp;
         lvlCapExp = nbLvlCapExp;
         lvl = nbLvl;
+        lang.Load(config.language);
     }
 
     public string Infos()
     {
         int expAvantLvlUp = lvlCapExp - exp;
         int infoExpAvantLvlUp = lvl + 1;
-        return "Bienvenu " + pseudo + ". Tu as " + vie + " vie, tu as " + force + " de force. Tu as " + exp + " exp et il te faut encore " + expAvantLvlUp + " exp pour passer au niveau " + infoExpAvantLvlUp;
+        var variables = new Dictionary<string, string>
+        {
+            { "pseudo", pseudo },
+            { "vie", vie.ToString() },
+            { "force", force.ToString() },
+            { "exp", exp.ToString() },
+            { "expRestant", expAvantLvlUp.ToString() },
+            { "niveau", infoExpAvantLvlUp.ToString() }
+        };
+        string infoText = lang.Get("playerStats", variables);
+        return infoText;
     }
     public bool enVie()
     {
