@@ -1,5 +1,7 @@
 {
     "get_pseudo" : "Quel est ton pseudo",
     "playerStats": "Bienvenue {pseudo}. Tu as {vie} vie, {force} de force. Tu as {exp} exp et il te faut encore {expRestant} exp pour passer au niveau {niveau}.",
-    "ennemiStats": "Un {nom} est devant toi il a {vie} vie et fait {degats} degats, si tu le tue tu recevra {expDrop} exp"
+    "ennemiStats": "Un {nom} est devant toi il a {vie} vie et fait {degats} degats, si tu le tue tu recevra {expDrop} exp",
+    "lose": "Tu as perdu!",
+    "restart": "Veut tu recommencer? 1 = oui; 2 = non"
 }

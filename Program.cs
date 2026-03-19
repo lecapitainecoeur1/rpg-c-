@@ -46,12 +46,12 @@ void Combats()
     {
         if (!joueur1.enVie())
         {
-            Console.WriteLine("Tu as perdu");
+            Console.WriteLine(lang.Get("lose"));
             Restart();
         }
         else if (!ennemy.enVie())
         {
-            Console.WriteLine($"Tu as gagne");
+            Console.WriteLine(lang.Get("win"));
             Exp();
             Restart();
         }
@@ -75,15 +75,14 @@ void Combats()
         }
         else
         {
-            Console.WriteLine($"Dommage tu vient de perdre un tour");
+            Console.WriteLine(lang.Get("turn_past"));
         }
         CheckVie();
     }
     void EnnemyTurn()
     {
         joueur1.vie = joueur1.vie - ennemy.degats;
-        Console.WriteLine($"L'ennemi t'a attaque tu as perdu des pv");
-        Console.WriteLine($"Tu as {joueur1.vie} pv");
+        Console.WriteLine(lang.get("Ennemie_attack"));
         CheckVie();
     }
     while (joueur1.enVie() && ennemy.enVie() && !fuite)
@@ -93,7 +92,7 @@ void Combats()
     }
     void Restart()
     {
-        Console.WriteLine("veux tu recommencer? 1 = oui 2 = non");
+        Console.WriteLine(lang.Get("restart"));
         string restart = Console.ReadLine();
         if (restart == "1")
         {
