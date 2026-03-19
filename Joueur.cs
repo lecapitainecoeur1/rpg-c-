@@ -1,4 +1,3 @@
-
 public class Joueur
 {
     LanguageService lang = new LanguageService();

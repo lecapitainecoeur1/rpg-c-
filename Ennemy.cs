@@ -3,7 +3,7 @@ public class Ennemy
 {
     LanguageService lang = new LanguageService();
     Config config = Config.Load();
-    string nom;
+    public string nom;
     public int vie;
     public int degats;
     public int expDrop;
