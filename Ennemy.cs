@@ -1,6 +1,8 @@
 
 public class Ennemy
 {
+    LanguageService lang = new LanguageService();
+    Config config = Config.Load();
     string nom;
     public int vie;
     public int degats;
@@ -11,6 +13,7 @@ public class Ennemy
         vie = nbVie;
         degats = nbDegats;
         expDrop = nbExpDrop;
+        lang.Load(config.language);
     }
     public Ennemy(Joueur joueur, Random rnd)
     {
@@ -74,7 +77,7 @@ public class Ennemy
             {"expDrop", expDrop.ToString()}
         };
         string textInfo = lang.Get("ennemiStats", variables);
-        return 
+        return textInfo;
     }
     public bool enVie()
     {
