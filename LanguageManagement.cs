@@ -25,22 +25,25 @@ public class LanguageService
     // 👉 Méthode simple
     public string Get(string key)
     {
-        if (translations == null)
+        if (translations == null || !translations.ContainsKey(key))
             return $"[{key}]";
 
-        return translations.TryGetValue(key, out var value)
-            ? value
-            : $"[{key}]";
+        return translations[key];
     }
 
     // 👉 Méthode avec variables
     public string Get(string key, Dictionary<string, string> variables)
     {
+        // Récupération de la traduction pour la clé
         string text = Get(key);
 
-        foreach (var pair in variables)
+        // Si la traduction existe, procéder au remplacement des variables
+        if (text.Contains("{") && text.Contains("}"))
         {
-            text = text.Replace("{" + pair.Key + "}", pair.Value);
+            foreach (var pair in variables)
+            {
+                text = text.Replace("{" + pair.Key + "}", pair.Value);
+            }
         }
 
         return text;

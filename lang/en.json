@@ -1,9 +1,9 @@
 {
  "get_pseudo" : "What's your pseudo",
   "playerStats": "Welcome {pseudo}. You have {vie} health, {force} strength. You have {exp} exp and need {expRestant} more to reach level {niveau}.",
-  "ennemiStats": "A {Ennemy.nom} is in front of you he have {vie} hp and he make {degats} damage,if ou kill him you will receive {expDrop} exp",
+  "ennemiStats": "A {nom} is in front of you he have {vie} hp and he make {degats} damage, if ou kill him you will receive {expDrop} exp",
   "player_attack": "you hit {Ennemy.nom} he lose hp",
-  "ennemie_attack": "{nom} hit you",
+  "ennemie_attack": "{Ennemy.nom} hit you",
   "turn_past": "you lose one turn",
   "lose": "You are dead",
   "restart": "Do you want to restart? 1 = yes; 2 = no"

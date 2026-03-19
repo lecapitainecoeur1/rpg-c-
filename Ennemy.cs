@@ -71,13 +71,13 @@ public class Ennemy
     {
         var variables = new Dictionary<string, string>
         {
-            {"nom", nom},
-            {"vie", vie.ToString()},
-            {"degats", degats.ToString()},
-            {"expDrop", expDrop.ToString()}
+            { "nom", nom },
+            { "vie", vie.ToString() },
+            { "degats", degats.ToString() },
+            { "expDrop", expDrop.ToString() },
         };
-        string textInfo = lang.Get("ennemiStats", variables);
-        return textInfo;
+        string infoText = lang.Get("ennemiStats", variables);
+        return infoText;
     }
     public bool enVie()
     {
