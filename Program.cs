@@ -5,7 +5,7 @@ Console.WriteLine("Choose language (fr/en): ");
 string choice = Console.ReadLine();
 
 lang.Load(choice);
-Console.WriteLine(Lang.Get("get_pseudo"));
+Console.WriteLine(lang.Get("get_pseudo"));
 string pseudoJoueur = Console.ReadLine();
 if (pseudoJoueur == "")
 {
