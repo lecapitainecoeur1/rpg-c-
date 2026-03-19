@@ -82,7 +82,7 @@ void Combats()
     void EnnemyTurn()
     {
         joueur1.vie = joueur1.vie - ennemy.degats;
-        Console.WriteLine(lang.get("Ennemie_attack"));
+        Console.WriteLine(lang.Get("Ennemie_attack"));
         CheckVie();
     }
     while (joueur1.enVie() && ennemy.enVie() && !fuite)
