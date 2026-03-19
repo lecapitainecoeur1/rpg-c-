@@ -1,5 +1,11 @@
 ﻿Random rnd = new Random();
-Console.WriteLine("Quel est ton pseudo?");
+LanguageService lang = new LanguageService();
+
+Console.WriteLine("Choose language (fr/en): ");
+string choice = Console.ReadLine();
+
+lang.Load(choice);
+Console.WriteLine(Lang.Get("get_pseudo"));
 string pseudoJoueur = Console.ReadLine();
 if (pseudoJoueur == "")
 {

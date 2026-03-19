@@ -1,52 +1,30 @@
 using System;
 using System.IO;
+using System.Text.Json;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
-public class TraductionManager
+public class LanguageService
 {
-    // Dictionnaire qui stocke toutes les traductions
-    private Dictionary<string, string> textes;
-    
-    // Constructeur : charge une langue au démarrage
-    public TraductionManager(string langue)
+    private Dictionary<string, string> translations = new();
+
+    public void Load(string lang)
     {
-        ChargerLangue(langue);
-    }
-    
-    // Méthode pour charger un fichier de langue
-    public void ChargerLangue(string langue)
-    {
-        // Chemin vers le fichier (ex: "fr.json")
-        string fichier = $"{langue}.json";
-        
-        // Vérifier si le fichier existe
-        if (!File.Exists(fichier))
+        string path = Path.Combine("lang", $"{lang}.json");
+
+        if (!File.Exists(path))
         {
-            Console.WriteLine($"ERREUR : Le fichier {fichier} n'existe pas !");
-            textes = new Dictionary<string, string>();
+            Console.WriteLine($"Lang file not found: {path}");
             return;
         }
-        
-        // Lire tout le contenu du fichier
-        string contenuJson = File.ReadAllText(fichier);
-        
-        // Convertir le JSON en dictionnaire C#
-        textes = JsonConvert.DeserializeObject<Dictionary<string, string>>(contenuJson);
-        
-        Console.WriteLine($"Langue chargée : {langue}");
+
+        string json = File.ReadAllText(path);
+        translations = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
     }
-    
-    // Méthode pour récupérer un texte traduit
-    public string Obtenir(string cle)
+
+    public string Get(string key)
     {
-        // Si la clé existe, retourne le texte
-        if (textes.ContainsKey(cle))
-        {
-            return textes[cle];
-        }
-        
-        // Sinon, affiche une erreur
-        return $"[TEXTE MANQUANT : {cle}]";
+        return translations.TryGetValue(key, out var value)
+            ? value
+            : $"[{key}]";
     }
 }
