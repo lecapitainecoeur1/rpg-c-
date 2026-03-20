@@ -66,6 +66,7 @@ public class Ennemy
                 expDrop = 20;
             }
         }
+        lang.Load(config.language);
     }
     public string Infos()
     {

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/workspaces/rpg-c-/rpg.csproj": {}
+    "E:\\Codes\\c#\\rpg-c-\\rpg.csproj": {}
   },
   "projects": {
-    "/workspaces/rpg-c-/rpg.csproj": {
+    "E:\\Codes\\c#\\rpg-c-\\rpg.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/rpg-c-/rpg.csproj",
+        "projectUniqueName": "E:\\Codes\\c#\\rpg-c-\\rpg.csproj",
         "projectName": "rpg",
-        "projectPath": "/workspaces/rpg-c-/rpg.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/rpg-c-/obj/",
+        "projectPath": "E:\\Codes\\c#\\rpg-c-\\rpg.csproj",
+        "packagesPath": "C:\\Users\\lecap\\.nuget\\packages\\",
+        "outputPath": "E:\\Codes\\c#\\rpg-c-\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\lecap\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -66,11 +66,15 @@
               "version": "[9.0.11, 9.0.11]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[9.0.11, 9.0.11]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.11, 9.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
               "version": "[9.0.11, 9.0.11]"
             }
           ],
@@ -79,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

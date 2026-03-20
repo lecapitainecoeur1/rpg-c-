@@ -3,7 +3,7 @@ using System.Text.Json;
 
 public class Config
 {
-    public string language { get; set; }
+    public string? language { get; set; }
 
     public static Config Load()
     {
@@ -18,7 +18,12 @@ public class Config
         }
 
         string json = File.ReadAllText(path);
-        return JsonSerializer.Deserialize<Config>(json);
+        var config = JsonSerializer.Deserialize<Config>(json);
+        if (config == null || string.IsNullOrEmpty(config.language))
+        {
+            config = new Config { language = "en" };
+        }
+        return config;
     }
     public void Save()
 {

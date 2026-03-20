@@ -3,24 +3,24 @@ LanguageService lang = new LanguageService();
 Config config = Config.Load();
 
 Console.WriteLine("Choose language (fr/en): ");
-string choice = Console.ReadLine();
-if (choice == ""){
+string? choice = Console.ReadLine();
+if (string.IsNullOrEmpty(choice)){
     choice = "en";
 }
 
 config.language = choice;
 config.Save();
-lang.Load(config.language);
+lang.Load(config.language ?? "en");
 Console.WriteLine(lang.Get("get_pseudo"));
-string pseudoJoueur = Console.ReadLine();
-if (pseudoJoueur == "")
+string? pseudoJoueur = Console.ReadLine();
+if (string.IsNullOrEmpty(pseudoJoueur))
 {
     if (choice == "fr")
         pseudoJoueur = "joueur";
     else if (choice == "en")
         pseudoJoueur = "player";
     else
-        Console.WriteLine("langue indisponible");
+        pseudoJoueur = "player";
 }
 Joueur joueur1 = new Joueur(pseudoJoueur, 20, 4, 0, 10, 1); // pseudo; max vie; force; exp; lvlcapexp; lvl;
 Combats();

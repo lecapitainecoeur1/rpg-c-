@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
+using System.Reflection;
 
 public class LanguageService
 {
@@ -9,7 +10,29 @@ public class LanguageService
 
     public void Load(string lang)
     {
-        string path = Path.Combine("lang", $"{lang}.json");
+        string exePath = Assembly.GetExecutingAssembly().Location;
+        if (string.IsNullOrEmpty(exePath))
+        {
+            Console.WriteLine("Impossible de déterminer le chemin de l'exécutable.");
+            translations = new Dictionary<string, string>();
+            return;
+        }
+        string exeDir = Path.GetDirectoryName(exePath);
+        if (string.IsNullOrEmpty(exeDir))
+        {
+            Console.WriteLine("Impossible de déterminer le répertoire de l'exécutable.");
+            translations = new Dictionary<string, string>();
+            return;
+        }
+        DirectoryInfo? rootDirInfo = new DirectoryInfo(exeDir).Parent?.Parent?.Parent;
+        if (rootDirInfo == null)
+        {
+            Console.WriteLine("Impossible de déterminer le répertoire racine du projet.");
+            translations = new Dictionary<string, string>();
+            return;
+        }
+        string rootDir = rootDirInfo.FullName;
+        string path = Path.Combine(rootDir, "lang", $"{lang}.json");
 
         if (!File.Exists(path))
         {
