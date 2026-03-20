@@ -58,16 +58,24 @@ void Combats()
     }
     void PlayerTurn()
     {
-        Console.WriteLine($"C'est a ton tour. Tu as {joueur1.vie} pv");
-        Console.WriteLine($"Tu as deux action possible:");
-        Console.WriteLine($"Tape 1 pour attaquer fait {joueur1.force} degats");
-        Console.Write($"Tape 2 pour fuir ");
+        var variables = new Dictionary<string, string>
+        {
+            { "joueur1.vie", joueur1.vie.ToString() },
+            { "joueur1.force", joueur1.force.ToString() },
+            { "Ennemy.nom", ennemy.nom },
+            { "Ennemy.vie", ennemy.vie.ToString() }
+        };
+        Console.WriteLine(lang.Get("turn", variables));
         int chanceFuite = rnd.Next(0, 2);
         string choixAction = Console.ReadLine();
         if (choixAction == "1")
         {
             ennemy.vie = ennemy.vie - joueur1.force;
-            Console.WriteLine($"Tu as attaque l'ennemy il a maintenant {ennemy.vie}pv");
+            variables = new Dictionary<string, string>
+            {
+                { "Ennemy.nom", ennemy.nom }
+            };
+            Console.WriteLine(lang.Get("player_attack", variables));
         }
         else if (chanceFuite == 1)
         {
@@ -82,7 +90,11 @@ void Combats()
     void EnnemyTurn()
     {
         joueur1.vie = joueur1.vie - ennemy.degats;
-        Console.WriteLine(lang.Get("Ennemie_attack"));
+        var variables = new Dictionary<string, string>
+        {
+            { "Ennemy.nom", ennemy.nom }
+        };
+        Console.WriteLine(lang.Get("ennemie_attack", variables));
         CheckVie();
     }
     while (joueur1.enVie() && ennemy.enVie() && !fuite)
