@@ -1,4 +1,3 @@
-
 public class Ennemy
 {
     LanguageService lang = new LanguageService();

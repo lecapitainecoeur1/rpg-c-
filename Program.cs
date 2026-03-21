@@ -2,7 +2,7 @@
 LanguageService lang = new LanguageService();
 Config config = Config.Load();
 
-Console.WriteLine("Choose language (fr/en): ");
+Console.Write("Choose language (fr/en): ");
 string? choice = Console.ReadLine();
 if (string.IsNullOrEmpty(choice)){
     choice = "en";
