@@ -16,11 +16,11 @@ string? pseudoJoueur = Console.ReadLine();
 if (string.IsNullOrEmpty(pseudoJoueur))
 {
     if (choice == "fr")
-        pseudoJoueur = "joueur";
+        pseudoJoueur = "Joueur";
     else if (choice == "en")
-        pseudoJoueur = "player";
+        pseudoJoueur = "Player";
     else
-        pseudoJoueur = "player";
+        pseudoJoueur = "Player";
 }
 Joueur joueur1 = new Joueur(pseudoJoueur, 20, 4, 0, 10, 1); // pseudo; max vie; force; exp; lvlcapexp; lvl;
 Combats();
