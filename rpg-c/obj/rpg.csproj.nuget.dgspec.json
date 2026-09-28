@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Codes\\c#\\rpg-c-\\rpg.csproj": {}
+    "/home/code-jeu/code/c#/rpg-c/rpg.csproj": {}
   },
   "projects": {
-    "E:\\Codes\\c#\\rpg-c-\\rpg.csproj": {
+    "/home/code-jeu/code/c#/rpg-c/rpg.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Codes\\c#\\rpg-c-\\rpg.csproj",
+        "projectUniqueName": "/home/code-jeu/code/c#/rpg-c/rpg.csproj",
         "projectName": "rpg",
-        "projectPath": "E:\\Codes\\c#\\rpg-c-\\rpg.csproj",
-        "packagesPath": "C:\\Users\\lecap\\.nuget\\packages\\",
-        "outputPath": "E:\\Codes\\c#\\rpg-c-\\obj\\",
+        "projectPath": "/home/code-jeu/code/c#/rpg-c/rpg.csproj",
+        "packagesPath": "/home/code-jeu/.nuget/packages/",
+        "outputPath": "/home/code-jeu/code/c#/rpg-c/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lecap\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/code-jeu/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -24,6 +24,7 @@
         },
         "frameworks": {
           "net9.0": {
+            "framework": "net9.0",
             "targetAlias": "net9.0",
             "projectReferences": {}
           }
@@ -38,10 +39,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net9.0": {
+          "framework": "net9.0",
           "targetAlias": "net9.0",
           "dependencies": {
             "Newtonsoft.Json": {
@@ -63,19 +65,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.11, 9.0.11]"
+              "version": "[9.0.20, 9.0.20]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[9.0.11, 9.0.11]"
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[9.0.20, 9.0.20]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[9.0.11, 9.0.11]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[9.0.11, 9.0.11]"
+              "version": "[9.0.20, 9.0.20]"
             }
           ],
           "frameworkReferences": {
@@ -83,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

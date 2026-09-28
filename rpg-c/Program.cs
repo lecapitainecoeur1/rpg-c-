@@ -16,11 +16,11 @@ string? pseudoJoueur = Console.ReadLine();
 if (string.IsNullOrEmpty(pseudoJoueur))
 {
     if (choice == "fr")
-        pseudoJoueur = "joueur";
+        pseudoJoueur = "Joueur";
     else if (choice == "en")
-        pseudoJoueur = "player";
+        pseudoJoueur = "Player";
     else
-        pseudoJoueur = "player";
+        pseudoJoueur = "Player";
 }
 Joueur joueur1 = new Joueur(pseudoJoueur, 20, 4, 0, 10, 1); // pseudo; max vie; force; exp; lvlcapexp; lvl;
 Combats();
@@ -28,6 +28,14 @@ void Combats()
 {
     joueur1.vie = joueur1.maxVie;
     Ennemy ennemy = new Ennemy(joueur1, rnd); 
+
+    var variables = new Dictionary<string, string>
+        {
+            { "joueur1.vie", joueur1.vie.ToString() },
+            { "joueur1.force", joueur1.force.ToString() },
+            { "Ennemy.nom", ennemy.nom },
+            { "Ennemy.vie", ennemy.vie.ToString() }
+        };
 
     Console.WriteLine(joueur1.Infos());
     Console.WriteLine(ennemy.Infos());
@@ -51,7 +59,7 @@ void Combats()
         }
         else if (!ennemy.enVie())
         {
-            Console.WriteLine(lang.Get("win"));
+            Console.WriteLine(lang.Get("win", variables));
             Exp();
             Restart();
         }
