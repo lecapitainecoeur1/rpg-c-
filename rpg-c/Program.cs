@@ -23,6 +23,7 @@ if (string.IsNullOrEmpty(pseudoJoueur))
         pseudoJoueur = "Player";
 }
 Joueur joueur1 = new Joueur(pseudoJoueur, 20, 4, 0, 10, 1); // pseudo; max vie; force; exp; lvlcapexp; lvl;
+
 Combats();
 void Combats()
 {
@@ -42,10 +43,10 @@ void Combats()
     bool fuite = false;
     void Exp()
     {
-        joueur1.exp = joueur1.exp + ennemy.expDrop;
+        joueur1.exp += ennemy.expDrop;
         if (joueur1.exp >= joueur1.lvlCapExp)
         {
-            joueur1.lvl = joueur1.lvl + 1;
+            joueur1.lvl += 1;
             joueur1.exp = 0;
             joueur1.LvlUp();
         }

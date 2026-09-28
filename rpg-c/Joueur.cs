@@ -9,7 +9,8 @@ public class Joueur
     public int lvlCapExp;
     public int lvl;
     public int maxVie;
-    public Joueur(string unPseudo, int nbVie, int nbForce, int nbExp, int nbLvlCapExp, int nbLvl)
+    public int potions;
+    public Joueur(string unPseudo, int nbVie, int nbForce, int nbExp, int nbLvlCapExp, int nbLvl, int nbPotion)
     {
         // actualisation des pseudo + vie + degats
         pseudo = unPseudo;
@@ -19,6 +20,7 @@ public class Joueur
         exp = nbExp;
         lvlCapExp = nbLvlCapExp;
         lvl = nbLvl;
+        potions = nbPotion;
         lang.Load(config.language);
     }
 
