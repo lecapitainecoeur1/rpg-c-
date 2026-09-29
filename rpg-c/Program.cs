@@ -7,6 +7,10 @@ string? choice = Console.ReadLine();
 if (string.IsNullOrEmpty(choice)){
     choice = "en";
 }
+else if (choice != "en" && choice != "fr")
+{
+    choice = "en";
+}
 
 config.language = choice;
 config.Save();
@@ -30,6 +34,23 @@ void Combats()
     joueur1.vie = joueur1.maxVie;
     Ennemy ennemy = new Ennemy(joueur1, rnd); 
 
+    int LireEntier(string message, int min, int max)
+    {
+        while (true)
+        {
+            Console.Write(message);
+
+            if (int.TryParse(Console.ReadLine(), out int valeur)
+                && valeur >= min
+                && valeur <= max)
+            {
+                return valeur;
+            }
+
+            Console.WriteLine($"Entre un nombre entre {min} et {max}.");
+        }
+    }
+
     var variables = new Dictionary<string, string>
         {
             { "joueur1.vie", joueur1.vie.ToString() },
@@ -41,16 +62,6 @@ void Combats()
     Console.WriteLine(joueur1.Infos());
     Console.WriteLine(ennemy.Infos());
     bool fuite = false;
-    void Exp()
-    {
-        joueur1.exp += ennemy.expDrop;
-        if (joueur1.exp >= joueur1.lvlCapExp)
-        {
-            joueur1.lvl += 1;
-            joueur1.exp = 0;
-            joueur1.LvlUp();
-        }
-    }
     void CheckVie()
     {
         if (!joueur1.enVie())
@@ -61,7 +72,7 @@ void Combats()
         else if (!ennemy.enVie())
         {
             Console.WriteLine(lang.Get("win", variables));
-            Exp();
+            joueur1.GagnerExp(ennemy.expDrop);
             Restart();
         }
     }
@@ -76,8 +87,8 @@ void Combats()
         };
         Console.WriteLine(lang.Get("turn", variables));
         int chanceFuite = rnd.Next(0, 2);
-        string choixAction = Console.ReadLine();
-        if (choixAction == "1")
+        int choixAction = LireEntier("Ton choix : ", 1, 2);
+        if (choixAction == 1)
         {
             ennemy.vie = ennemy.vie - joueur1.force;
             variables = new Dictionary<string, string>
@@ -86,36 +97,33 @@ void Combats()
             };
             Console.WriteLine(lang.Get("player_attack", variables));
         }
-        else if (chanceFuite == 1)
+        else if(choixAction == 2)
         {
-            fuite = true;
-        }
-        else
-        {
-            Console.WriteLine(lang.Get("turn_past"));
+            if (chanceFuite == 1)
+            {
+                fuite = true;
+            }   
         }
         CheckVie();
     }
     void EnnemyTurn()
     {
         joueur1.vie = joueur1.vie - ennemy.degats;
-        var variables = new Dictionary<string, string>
-        {
-            { "Ennemy.nom", ennemy.nom }
-        };
         Console.WriteLine(lang.Get("ennemie_attack", variables));
         CheckVie();
     }
     while (joueur1.enVie() && ennemy.enVie() && !fuite)
     {
         PlayerTurn();
+        if (fuite)
+            return;
         EnnemyTurn();
     }
     void Restart()
     {
         Console.WriteLine(lang.Get("restart"));
-        string restart = Console.ReadLine();
-        if (restart == "1")
+        int restart = LireEntier("Ton choix : ", 1, 1);
+        if (restart == 1)
         {
             Combats();
         }

@@ -14,30 +14,35 @@ public class Ennemy
         expDrop = nbExpDrop;
         lang.Load(config.language);
     }
+    private void Gobelin()
+    {
+        nom = "gobelin";
+        vie = 20;
+        degats = 3;
+        expDrop = 5;
+    }
+    private void Orc()
+    {
+        nom = "orc";
+        vie = 40;
+        degats = 6;
+        expDrop = 10;
+    }
     public Ennemy(Joueur joueur, Random rnd)
     {
         if (joueur.lvl < 5)
         {
-            nom = "gobelin";
-            vie = 20;
-            degats = 3;
-            expDrop = 5;
+            Gobelin();
         }
         else if (joueur.lvl <= 10)
         {
             if (rnd.Next(0, 2) == 0)
             {
-                nom = "gobelin";
-                vie = 20;
-                degats = 3;
-                expDrop = 5;
+                Gobelin();
             }
             else
             {
-                nom = "orc";
-                vie = 40;
-                degats = 6;
-                expDrop = 10;
+                Orc();
             }
         }
         else
@@ -45,17 +50,11 @@ public class Ennemy
             int ennemySpawn = rnd.Next(0, 3);
             if (ennemySpawn == 0)
             {
-                nom = "gobelin";
-                vie = 20;
-                degats = 3;
-                expDrop = 5;
+                Gobelin();
             }
             else if (ennemySpawn == 1)
             {
-                nom = "orc";
-                vie = 40;
-                degats = 6;
-                expDrop = 10;
+                Orc();
             }
             else
             {

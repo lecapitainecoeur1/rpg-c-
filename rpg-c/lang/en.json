@@ -5,7 +5,6 @@
   "turn": "It's your turn. You have {joueur1.vie} hp\n{Ennemy.nom} has {Ennemy.vie} hp\nyou have two options:\n1 = attack make {joueur1.force} damage; 2 = try to flee",
   "player_attack": "you hit {Ennemy.nom} he loses hp",
   "ennemie_attack": "{Ennemy.nom} hits you",
-  "turn_past": "you lose one turn",
   "lose": "You are dead",
   "win": "{Ennemy.nom} is dead. You win",
   "restart": "Do you want to restart? 1 = yes; 2 = no"

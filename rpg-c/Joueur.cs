@@ -27,7 +27,7 @@ public class Joueur
     public string Infos()
     {
         int expAvantLvlUp = lvlCapExp - exp;
-        int infoExpAvantLvlUp = lvl + 1;
+        int niveauSuivant = lvl + 1;
         var variables = new Dictionary<string, string>
         {
             { "pseudo", pseudo },
@@ -35,7 +35,7 @@ public class Joueur
             { "force", force.ToString() },
             { "exp", exp.ToString() },
             { "expRestant", expAvantLvlUp.ToString() },
-            { "niveau", infoExpAvantLvlUp.ToString() }
+            { "niveau", niveauSuivant.ToString() }
         };
         string infoText = lang.Get("playerStats", variables);
         return infoText;
@@ -44,8 +44,18 @@ public class Joueur
     {
         return vie > 0;
     }
+    public void GagnerExp(int experience)
+    {
+        exp += experience;
+        if (exp >= lvlCapExp)
+        {
+            LvlUp();
+        }
+    }
     public void LvlUp()
     {
+        lvl += 1;
+        exp -= lvlCapExp ;
         force = force + 1;
         maxVie = maxVie + 2;
         lvlCapExp = lvlCapExp + 10;

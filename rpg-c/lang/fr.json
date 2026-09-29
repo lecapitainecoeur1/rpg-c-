@@ -5,7 +5,6 @@
     "turn": "C'est ton tour. Tu as {joueur1.vie} pv\nle {Ennemy.nom} a {Ennemy.vie} hp\ntu as deux options:\n1 = attaquer faire {joueur1.force} dégâts; 2 = tenter de fuir",
     "player_attack": "Tu frappe {Ennemy.nom} il perd de la vie",
     "ennemie_attack": "{Ennemy.nom} te frappe",
-    "turn_past": "tu perds un tour",
     "lose": "Tu as perdu!",
     "win": "{Ennemy.nom} est mort. Tu as gagné!",
     "restart": "Veut tu recommencer? 1 = oui; 2 = non"
