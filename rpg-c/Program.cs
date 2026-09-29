@@ -22,7 +22,7 @@ if (string.IsNullOrEmpty(pseudoJoueur))
     else
         pseudoJoueur = "Player";
 }
-Joueur joueur1 = new Joueur(pseudoJoueur, 20, 4, 0, 10, 1); // pseudo; max vie; force; exp; lvlcapexp; lvl;
+Joueur joueur1 = new Joueur(pseudoJoueur, 20, 4, 0, 10, 1, 0); // pseudo; max vie; force; exp; lvlcapexp; lvl; potions
 
 Combats();
 void Combats()
