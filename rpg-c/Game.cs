@@ -57,15 +57,20 @@ void Combats()
 
     var variables = new Dictionary<string, string>
         {
+            { "pseudo", pseudoJoueur},
             { "joueur1.vie", joueur1.vie.ToString() },
             { "joueur1.force", joueur1.force.ToString() },
             { "Ennemy.nom", ennemy.nom },
             { "Ennemy.vie", ennemy.vie.ToString() },
-            { "Ennemy.degats", ennemy.degats.ToString() }
+            { "Ennemy.degats", ennemy.degats.ToString() },
+            { "exp", joueur1.exp.ToString() },
+            { "expRestant", joueur1.expAvantLvlUp.ToString() },
+            { "niveau", joueur1.niveauSuivant.ToString() },
+            { "expDrop", ennemy.expDrop.ToString() }
         };
 
-    Console.WriteLine(joueur1.Infos());
-    Console.WriteLine(ennemy.Infos());
+    Console.WriteLine(lang.Get("playerStats", variables));
+    Console.WriteLine(lang.Get("ennemiStats", variables));
     bool fuite = false;
     void CheckVie()
     {
@@ -83,24 +88,12 @@ void Combats()
     }
     void PlayerTurn()
     {
-        var variables = new Dictionary<string, string>
-        {
-            { "joueur1.vie", joueur1.vie.ToString() },
-            { "joueur1.force", joueur1.force.ToString() },
-            { "Ennemy.nom", ennemy.nom },
-            { "Ennemy.vie", ennemy.vie.ToString() },
-            { "Ennemy.degats", ennemy.degats.ToString() }
-        };
         Console.WriteLine(lang.Get("turn", variables));
         int chanceFuite = rnd.Next(0, 2);
         int choixAction = LireEntier(lang.Get("choice"), 1, 2);
         if (choixAction == 1)
         {
             ennemy.vie = ennemy.vie - joueur1.force;
-            variables = new Dictionary<string, string>
-            {
-                { "Ennemy.nom", ennemy.nom }
-            };
             Console.WriteLine(lang.Get("player_attack", variables));
         }
         else if(choixAction == 2)
@@ -120,6 +113,15 @@ void Combats()
     }
     while (joueur1.enVie() && ennemy.enVie() && !fuite)
     {
+        variables = new Dictionary<string, string>
+        {
+            { "joueur1.vie", joueur1.vie.ToString() },
+            { "joueur1.force", joueur1.force.ToString() },
+            { "Ennemy.nom", ennemy.nom },
+            { "Ennemy.vie", ennemy.vie.ToString() },
+            { "Ennemy.degats", ennemy.degats.ToString() },
+            
+        };
         PlayerTurn();
         if (fuite)
             return;
@@ -128,7 +130,7 @@ void Combats()
     void Restart()
     {
         Console.WriteLine(lang.Get("restart"));
-        int restart = LireEntier("Ton choix : ", 1, 2);
+        int restart = LireEntier(lang.Get("choice"), 1, 2);
         if (restart == 1)
         {
             Combats();

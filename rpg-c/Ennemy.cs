@@ -1,7 +1,5 @@
 public class Ennemy
 {
-    LanguageService lang = new LanguageService();
-    Config config = Config.Load();
     public string nom;
     public int vie;
     public int degats;
@@ -12,18 +10,17 @@ public class Ennemy
         vie = nbVie;
         degats = nbDegats;
         expDrop = nbExpDrop;
-        lang.Load(config.language);
     }
     private void Gobelin()
     {
-        nom = "gobelin";
+        nom = "Gobelin";
         vie = 20;
         degats = 3;
         expDrop = 5;
     }
     private void Orc()
     {
-        nom = "orc";
+        nom = "Orc";
         vie = 40;
         degats = 6;
         expDrop = 10;
@@ -58,25 +55,12 @@ public class Ennemy
             }
             else
             {
-                nom = "troll";
+                nom = "Troll";
                 vie = 80;
                 degats = 12;
                 expDrop = 20;
             }
         }
-        lang.Load(config.language);
-    }
-    public string Infos()
-    {
-        var variables = new Dictionary<string, string>
-        {
-            { "nom", nom },
-            { "vie", vie.ToString() },
-            { "degats", degats.ToString() },
-            { "expDrop", expDrop.ToString() },
-        };
-        string infoText = lang.Get("ennemiStats", variables);
-        return infoText;
     }
     public bool enVie()
     {
