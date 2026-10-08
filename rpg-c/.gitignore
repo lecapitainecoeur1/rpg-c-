@@ -53,3 +53,36 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# Build
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# VS Code
+.vscode/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# NuGet
+packages/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Fichiers temporaires
+*.tmp
+*.temp
+
+# Fichiers de sauvegarde
+*.bak
