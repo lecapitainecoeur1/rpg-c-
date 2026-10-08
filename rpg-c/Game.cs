@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-Random rnd = new Random();
+﻿Random rnd = new Random();
 LanguageService lang = new LanguageService();
 Config config = Config.Load();
 
