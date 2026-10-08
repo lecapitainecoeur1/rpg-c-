@@ -1,6 +1,5 @@
 public class Joueur
 {
-    string pseudo; // pseudo du joueur
     public int vie; // vie du joueur
     public int force; // degat que fait le joueur
     public int exp;
@@ -10,10 +9,9 @@ public class Joueur
     public int potions;
     public int expAvantLvlUp;
     public int niveauSuivant;
-    public Joueur(string unPseudo, int nbVie, int nbForce, int nbExp, int nbLvlCapExp, int nbLvl, int nbPotion)
+    public Joueur(int nbVie, int nbForce, int nbExp, int nbLvlCapExp, int nbLvl, int nbPotion)
     {
         // actualisation des variables
-        pseudo = unPseudo;
         vie = nbVie;
         maxVie = nbVie;
         force = nbForce;
@@ -38,10 +36,12 @@ public class Joueur
     }
     public void LvlUp()
     {
+        exp -= lvlCapExp;
         lvl += 1;
-        exp -= lvlCapExp ;
-        force = force + 1;
-        maxVie = maxVie + 2;
-        lvlCapExp = lvlCapExp + 10;
+        force += 1;
+        maxVie += 2;
+        lvlCapExp += 10;
+        niveauSuivant += 1;
+        expAvantLvlUp = lvlCapExp - exp;
     }
 }
