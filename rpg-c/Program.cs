@@ -46,8 +46,12 @@ void Combats()
             {
                 return valeur;
             }
-
-            Console.WriteLine($"Entre un nombre entre {min} et {max}.");
+            var variables = new Dictionary<string, string>
+            {
+                { "min", min.ToString() },
+                { "max", max.ToString() }
+            };
+            Console.WriteLine(lang.Get("replyFalse", variables));
         }
     }
 
@@ -56,7 +60,8 @@ void Combats()
             { "joueur1.vie", joueur1.vie.ToString() },
             { "joueur1.force", joueur1.force.ToString() },
             { "Ennemy.nom", ennemy.nom },
-            { "Ennemy.vie", ennemy.vie.ToString() }
+            { "Ennemy.vie", ennemy.vie.ToString() },
+            { "Ennemy.degats", ennemy.degats.ToString() }
         };
 
     Console.WriteLine(joueur1.Infos());
@@ -83,11 +88,12 @@ void Combats()
             { "joueur1.vie", joueur1.vie.ToString() },
             { "joueur1.force", joueur1.force.ToString() },
             { "Ennemy.nom", ennemy.nom },
-            { "Ennemy.vie", ennemy.vie.ToString() }
+            { "Ennemy.vie", ennemy.vie.ToString() },
+            { "Ennemy.degats", ennemy.degats.ToString() }
         };
         Console.WriteLine(lang.Get("turn", variables));
         int chanceFuite = rnd.Next(0, 2);
-        int choixAction = LireEntier("Ton choix : ", 1, 2);
+        int choixAction = LireEntier(lang.Get("choice"), 1, 2);
         if (choixAction == 1)
         {
             ennemy.vie = ennemy.vie - joueur1.force;
@@ -122,7 +128,7 @@ void Combats()
     void Restart()
     {
         Console.WriteLine(lang.Get("restart"));
-        int restart = LireEntier("Ton choix : ", 1, 1);
+        int restart = LireEntier("Ton choix : ", 1, 2);
         if (restart == 1)
         {
             Combats();

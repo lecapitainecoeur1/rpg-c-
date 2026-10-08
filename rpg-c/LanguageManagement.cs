@@ -13,7 +13,6 @@ public class LanguageService
         string exePath = Assembly.GetExecutingAssembly().Location;
         if (string.IsNullOrEmpty(exePath))
         {
-            Console.WriteLine("Impossible de déterminer le chemin de l'exécutable.");
             translations = new Dictionary<string, string>();
             return;
         }
@@ -21,7 +20,6 @@ public class LanguageService
         string exeDir = Path.GetDirectoryName(exePath);
         if (string.IsNullOrEmpty(exeDir))
         {
-            Console.WriteLine("Impossible de déterminer le répertoire de l'exécutable.");
             translations = new Dictionary<string, string>();
             return;
         }

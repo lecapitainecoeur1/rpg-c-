@@ -143,6 +143,8 @@ Game
  └── Config
 
 Tu n'as pas besoin de faire tout ça immédiatement. Mais c'est vers cette architecture que je pousserais ton projet.
+
+
 2. Il y a surtout un bug potentiel avec la fuite
 
 Regarde :

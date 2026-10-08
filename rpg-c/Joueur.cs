@@ -12,7 +12,7 @@ public class Joueur
     public int potions;
     public Joueur(string unPseudo, int nbVie, int nbForce, int nbExp, int nbLvlCapExp, int nbLvl, int nbPotion)
     {
-        // actualisation des pseudo + vie + degats
+        // actualisation des variables
         pseudo = unPseudo;
         vie = nbVie;
         maxVie = nbVie;
