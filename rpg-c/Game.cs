@@ -26,7 +26,7 @@ if (string.IsNullOrEmpty(pseudoJoueur))
     else
         pseudoJoueur = "Player";
 }
-Joueur joueur1 = new Joueur(20, 4, 0, 10, 1, 0); // pseudo; max vie; force; exp; lvlcapexp; lvl; potions
+Joueur joueur1 = new Joueur(20, 4, 0, 10, 1, 0); // max vie; force; exp; lvlcapexp; lvl; potions;
 
 bool wentContinue = true;
 
@@ -75,7 +75,10 @@ while (wentContinue){
 
         Console.WriteLine(lang.Get("playerStats", variables));
         Console.WriteLine(lang.Get("ennemiStats", variables));
+
         bool finCombat = false;
+        bool bloque = false;
+
         void CheckVie()
         {
             if (!joueur1.enVie())
@@ -93,15 +96,42 @@ while (wentContinue){
         void PlayerTurn()
         {
             Console.WriteLine(lang.Get("turn", variables));
+            int degats = joueur1.force * 150/100;
             int chanceFuite = rnd.Next(0, 2);
             int choixAction = LireEntier(lang.Get("choice"), 1, 3);
+            variables = new Dictionary<string, string>
+                {
+                    { "joueur1.degats", joueur1.force.ToString() },
+                    { "degats", degats.ToString() },
+                    { "Ennemy.nom", ennemy.nom },
+                };
             if (choixAction == 1)
             {
-                ennemy.vie = ennemy.vie - joueur1.force;
-                Console.WriteLine(lang.Get("player_attack", variables));
+                
+                Console.WriteLine(lang.Get("choixAttaque", variables));
+                int choixAttack = LireEntier(lang.Get("choice"),1,2);
+                if (choixAttack == 1)
+                {
+                    ennemy.vie -= joueur1.force;
+                    Console.WriteLine(lang.Get("player_attack", variables));
+                }
+                else if (choixAttack == 2)
+                {
+                    if (rnd.Next(0, 101) <= 70)
+                    {
+                        
+                        ennemy.vie -= degats;
+                        Console.WriteLine(lang.Get("player_attack", variables));
+                    }
+                    else
+                    {
+                        Console.WriteLine(lang.Get("attackFail"));
+                    }
+                }
             }
             else if (choixAction == 2)
             {
+                bloque = true;
                 Console.WriteLine(lang.Get("blocage"));
             }
             else if (choixAction == 3)
@@ -115,7 +145,12 @@ while (wentContinue){
         }
         void EnnemyTurn()
         {
-            joueur1.vie -= ennemy.degats;
+            if (bloque)
+            {
+                joueur1.vie -= ennemy.degats * 50/100;
+                bloque = false;
+            }
+            else {joueur1.vie -= ennemy.degats;}
             Console.WriteLine(lang.Get("ennemie_attack", variables));
             CheckVie();
         }

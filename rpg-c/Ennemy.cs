@@ -14,15 +14,15 @@ public class Ennemy
     private void Gobelin()
     {
         nom = "Gobelin";
-        vie = 20;
-        degats = 3;
+        vie = 22;
+        degats = 4;
         expDrop = 5;
     }
     private void Orc()
     {
         nom = "Orc";
-        vie = 40;
-        degats = 6;
+        vie = 50;
+        degats = 8;
         expDrop = 10;
     }
     public Ennemy(Joueur joueur, Random rnd)
