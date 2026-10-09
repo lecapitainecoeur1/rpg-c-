@@ -32,10 +32,11 @@ bool wentContinue = true;
 
 while (wentContinue){
 
+    bool finCombat = false;
+
     Combats();
     void Combats()
     {
-        joueur1.vie = joueur1.maxVie;
         Ennemy ennemy = new Ennemy(joueur1, rnd); 
 
         int LireEntier(string message, int min, int max)
@@ -76,7 +77,7 @@ while (wentContinue){
         Console.WriteLine(lang.Get("playerStats", variables));
         Console.WriteLine(lang.Get("ennemiStats", variables));
 
-        bool finCombat = false;
+        
         bool bloque = false;
 
         void CheckVie()
@@ -85,6 +86,7 @@ while (wentContinue){
             {
                 Console.WriteLine(lang.Get("lose"));
                 finCombat = true;
+                joueur1.vie = joueur1.maxVie;
             }
             else if (!ennemy.enVie())
             {
@@ -107,7 +109,6 @@ while (wentContinue){
                 };
             if (choixAction == 1)
             {
-                
                 Console.WriteLine(lang.Get("choixAttaque", variables));
                 int choixAttack = LireEntier(lang.Get("choice"),1,2);
                 if (choixAttack == 1)
@@ -117,7 +118,7 @@ while (wentContinue){
                 }
                 else if (choixAttack == 2)
                 {
-                    if (rnd.Next(0, 101) <= 70)
+                    if (rnd.Next(0, 100) <= 70)
                     {
                         
                         ennemy.vie -= degats;
@@ -127,12 +128,14 @@ while (wentContinue){
                     {
                         Console.WriteLine(lang.Get("attackFail"));
                     }
+                    CheckVie();
                 }
             }
             else if (choixAction == 2)
             {
                 bloque = true;
                 Console.WriteLine(lang.Get("blocage"));
+                CheckVie();
             }
             else if (choixAction == 3)
             {
@@ -140,8 +143,11 @@ while (wentContinue){
                 {
                     finCombat = true;
                 }   
+                else
+                {
+                    Console.WriteLine(lang.Get("fuiteFail"));
+                }
             }
-            CheckVie();
         }
         void EnnemyTurn()
         {
@@ -166,18 +172,16 @@ while (wentContinue){
                 
             };
             PlayerTurn();
-            if (finCombat)
+            if (!finCombat)
             {
-                return;
+                EnnemyTurn();
             }
-            EnnemyTurn();
         }
     }
     Console.WriteLine(lang.Get("restart"));
     string restart = Console.ReadLine();
     if (restart == "1")
     {
-
     }
     else
     {
