@@ -79,11 +79,11 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Build RPG
-      run: dotnet build ./rpg-c/rpg.csproj
+      run: dotnet build ./rpg-c/rpg.csproj --configuration Release --no-restore
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore
-      run: dotnet restore ./rpg-c/rpg.csproj --configuration Release --no-restore
+      run: dotnet restore ./rpg-c/rpg.csproj 
 
     # Decode the base 64 encoded pfx and save the Signing_Certificate
     - name: Decode the pfx
