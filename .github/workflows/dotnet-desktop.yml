@@ -82,8 +82,9 @@ jobs:
       run: dotnet build ./rpg-c/rpg.csproj --configuration Release --no-restore
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore
-      run: dotnet restore ./rpg-c/rpg.csproj 
+    - name: Restore NuGet packages
+      run: dotnet restore ./rpg-c/rpg.csproj --force
+  
 
     # Decode the base 64 encoded pfx and save the Signing_Certificate
     - name: Decode the pfx
